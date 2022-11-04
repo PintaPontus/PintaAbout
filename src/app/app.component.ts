@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {FirebaseStorageService} from "./services/firebase-storage.service";
+import {OxidizedService} from "./services/oxidized.service";
 
 @Component({
 	selector: 'app-root',
@@ -13,7 +14,8 @@ export class AppComponent {
 		// this.loadLogo();
 	}
 
-	constructor(private firebaseStorageService: FirebaseStorageService) {
+	constructor(private firebaseStorageService: FirebaseStorageService,
+				private oxidizedService: OxidizedService) {
 	}
 
 	// async loadLogo(){
@@ -21,4 +23,8 @@ export class AppComponent {
 	// 	this.logoUrl = await this.firebaseStorageService.getUrl('gs://pinta-about.appspot.com/B 2.0.png');
 	// 	console.log('LOGO URL: ', this.logoUrl);
 	// }
+
+	async greetUser(){
+		this.oxidizedService.greetUser();
+	}
 }
