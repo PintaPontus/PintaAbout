@@ -17,7 +17,9 @@ export class OxidizedService {
 				greet(arg : string) {
 					console.log(arg);
 				},
+				wbg: ()=>{},
 			},
+
 		};
 		this.init().then(_ => {
 			this.ready.next(true);
@@ -30,7 +32,7 @@ export class OxidizedService {
 			fetch('./assets/oxidized.wasm'),
 			this.importObject
 		).then((res) => {
-			console.log("WASM: ", res.instance.exports);
+			console.log("WASM: ", res);
 		}).catch(err => {
 			console.error("WASM ERR: ", err);
 		})
