@@ -8,23 +8,12 @@ import {OxidizedService} from "./services/oxidized.service";
 	styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-	// public logoUrl: string | undefined;
-
-	ngOnInit() {
-		// this.loadLogo();
-	}
 
 	constructor(private firebaseStorageService: FirebaseStorageService,
 				private oxidizedService: OxidizedService) {
 	}
 
-	// async loadLogo(){
-	// 	console.log('START REQUEST');
-	// 	this.logoUrl = await this.firebaseStorageService.getUrl('gs://pinta-about.appspot.com/B 2.0.png');
-	// 	console.log('LOGO URL: ', this.logoUrl);
-	// }
-
 	async greetUser(){
-		this.oxidizedService.greetUser();
+		this.oxidizedService.greetUser("Matteo");
 	}
 }
