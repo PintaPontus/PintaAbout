@@ -16,8 +16,8 @@ export class FirebaseStorageService {
 		this.fireStorage = getStorage(this.app, 'gs://pinta-about.appspot.com');
 	}
 
-	getUrl(file: string) {
-		return getDownloadURL(ref(this.fireStorage, file));
+	getUrl(gsUrl: string) {
+		return getDownloadURL(ref(this.fireStorage, gsUrl));
 	}
 
 }

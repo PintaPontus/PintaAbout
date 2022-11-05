@@ -1,17 +1,43 @@
-import {Injectable} from '@angular/core';
-import init, { greet } from "../wasm/oxidized/pkg/oxidized.js";
+import { Injectable } from '@angular/core'
+import {BehaviorSubject} from "rxjs";
+import {FirebaseStorageService} from "./firebase-storage.service";
 
 @Injectable({
 	providedIn: 'root'
 })
 export class OxidizedService {
 
-	constructor() {
-	}
+	// This is just to let components know when WASM is ready
+	public ready = new BehaviorSubject<boolean>(false);
+	private importObject;
 
-	greetUser() {
-		init().then(() => {
-			greet(prompt("Inserisci il tuo nome")||"Nome non valido");
+	constructor(private firebaseStorageService: FirebaseStorageService) {
+		this.importObject = {
+			imports: {
+				greet(arg : string) {
+					console.log(arg);
+				},
+			},
+		};
+		this.init().then(_ => {
+			this.ready.next(true);
 		});
 	}
+
+	private async init() {
+		console.log(this.importObject);
+		return WebAssembly.instantiateStreaming(
+			fetch('./assets/oxidized.wasm'),
+			this.importObject
+		).then((res) => {
+			console.log("WASM: ", res.instance.exports);
+		}).catch(err => {
+			console.error("WASM ERR: ", err);
+		})
+	}
+
+	public greetUser(){
+		alert("CIAO!");
+	}
+
 }
