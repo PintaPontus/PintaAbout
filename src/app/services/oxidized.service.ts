@@ -13,7 +13,7 @@ export class OxidizedService {
 	public WASMTime = new Subject<string>();
 	public JSTime = new Subject<string>();
 
-	public goal = 46;
+	public goal = 45;
 
 	ngOnInit(){
 		this.WASMTime.next("0");
