@@ -3,7 +3,10 @@
 	Matteo Pintus
 </header>
 <main>
-	<button class="greet-btn" (click)="greetUser()">SALUTAMI !</button>
+	<button class="start-btn" (click)="startRace()">VIA</button>
+	<br>WASM Time: {{WASMTime}}
+	<br>JS Time: {{JSTime}}
+	<br>GOAL: {{goal}}
 	<router-outlet></router-outlet>
 </main>
 <footer>

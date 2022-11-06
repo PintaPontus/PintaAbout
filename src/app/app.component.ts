@@ -13,7 +13,21 @@ export class AppComponent {
 				private oxidizedService: OxidizedService) {
 	}
 
+	WASMTime = "";
+	JSTime = "";
+	goal = 0;
+
+	ngOnInit(){
+		this.oxidizedService.WASMTime.subscribe(t => this.WASMTime = t);
+		this.oxidizedService.JSTime.subscribe(t => this.JSTime = t);
+		this.goal = this.oxidizedService.goal;
+	}
+
 	async greetUser(){
 		this.oxidizedService.greetUser("Matteo");
+	}
+
+	async startRace() {
+		await this.oxidizedService.raceFibonacci();
 	}
 }
