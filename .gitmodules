@@ -1,0 +1,3 @@
+[submodule "src/app/wasm/oxidized"]
+	path = src/app/wasm/oxidized
+	url = https://github.com/PintaPontus/Oxidized.git
